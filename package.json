@@ -1,0 +1,33 @@
+{
+  "name": "transduce-gen",
+  "version": "0.0.1",
+  "description": "Create Transducers with ES6 Generators",
+  "main": "transduce-gen.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/transduce/transduce-gen"
+  },
+  "keywords": [
+    "transducer",
+    "transduce",
+    "generator",
+    "es6"
+  ],
+  "author": "Kevin Beaty",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/transduce/transduce-gen/issues"
+  },
+  "homepage": "http://github.com/transduce/transduce-gen",
+  "dependencies": {
+    "transduce-util": "0.0.2"
+  },
+  "devDependencies": {
+    "tape": "~3.0.0",
+    "promise": "~6.0.1",
+    "transduct": "0.0.1"
+  }
+}
