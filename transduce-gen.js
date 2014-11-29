@@ -1,5 +1,5 @@
 "use strict";
-var tp = require('transduce-util'), undef;
+var tp = require('transduce-reduced'), undef;
 module.exports = gen;
 function gen(stepper, completer) {
   return function(xf){

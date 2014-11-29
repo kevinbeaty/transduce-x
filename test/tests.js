@@ -1,7 +1,7 @@
 "use strict";
 var gen = require('../'), 
     test = require('tape'),
-    tr = require('transduct'),
+    tr = require('transduce'),
     comp = tr.compose,
     slice = Array.prototype.slice;
 
