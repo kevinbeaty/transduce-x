@@ -27,6 +27,6 @@
   },
   "devDependencies": {
     "tape": "~3.0.0",
-    "transduce": "~0.2.0"
+    "transduce": "~0.3.0"
   }
 }
