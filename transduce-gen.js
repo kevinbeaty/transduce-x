@@ -1,5 +1,5 @@
 "use strict";
-var tp = require('transduce-util'), undef;
+var reduced = require('transduce/util/reduced'), undef;
 module.exports = gen;
 function gen(stepper, completer) {
   return function(xf){
@@ -41,7 +41,7 @@ Stepper.prototype.step = function(result, input){
   }
   this.next = next;
   if(next.done){
-    return tp.reduced(this.result);
+    return reduced(this.result);
   }
   return this.result;
 };
