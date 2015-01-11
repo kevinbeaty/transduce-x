@@ -3,7 +3,7 @@
 
 Create Transducers using ES6 Generators.  Generator is created with a step function and each item in transformation is yielded through the generator.  Calling step function will step value to next transformer in the pipeline.  An optional completing function can be provided that will be called on transformer result.
 
-Works with [transducers-js][3] or [transducers.js][4] or any library conforming to [transduce-protocol][5].
+Works with [transduce][5], [transducers-js][3] or [transducers.js][4].
 
 Requires support for ES6 generators.  If using Node.js run with `node --harmony` and version 0.11 or better.
 
@@ -93,4 +93,4 @@ tr.into([], comp(push(4), push(5,6)), [1,2,3]))
 
 [3]: https://github.com/cognitect-labs/transducers-js
 [4]: https://github.com/jlongster/transducers.js
-[5]: https://github.com/transduce/transduce-protocol
+[5]: https://github.com/transduce/transduce

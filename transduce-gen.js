@@ -1,5 +1,5 @@
 "use strict";
-var reduced = require('transduce/util/reduced'), undef;
+var reduced = require('transduce/base/reduced'), undef;
 module.exports = gen;
 function gen(stepper, completer) {
   return function(xf){
