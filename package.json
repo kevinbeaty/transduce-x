@@ -1,6 +1,6 @@
 {
   "name": "transduce-gen",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Create Transducers with ES6 Generators",
   "main": "transduce-gen.js",
   "scripts": {
@@ -22,10 +22,8 @@
     "url": "https://github.com/transduce/transduce-gen/issues"
   },
   "homepage": "http://github.com/transduce/transduce-gen",
-  "dependencies": {
-    "transduce": "~0.5.0"
-  },
   "devDependencies": {
-    "tape": "~3.0.3"
+    "tape": "~3.0.3",
+    "transduce": "~0.5.2"
   }
 }

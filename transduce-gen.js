@@ -1,5 +1,4 @@
 "use strict";
-var reduced = require('transduce/base/reduced'), undef;
 module.exports = gen;
 function gen(stepper, completer) {
   return function(xf){
@@ -33,7 +32,7 @@ Stepper.prototype.step = function(result, input){
   var next = this.next,
       gen = this.gen;
   this.result = result;
-  if(next === undef){
+  if(next === void 0){
     next = gen.next();
   }
   if(!next.done){
@@ -41,7 +40,7 @@ Stepper.prototype.step = function(result, input){
   }
   this.next = next;
   if(next.done){
-    return reduced(this.result);
+    return {value: this.result, __transducers_reduced__: true};
   }
   return this.result;
 };
