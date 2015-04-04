@@ -10,16 +10,16 @@ function Gen(stepper, completer, xf) {
   this.stepper = new Stepper(stepper, xf);
   this.completer = completer;
 }
-Gen.prototype.init = function(){
-  return this.xf.init();
+Gen.prototype['@@transducer/init'] = function(){
+  return this.xf['@@transducer/init']();
 };
-Gen.prototype.result = function(result){
+Gen.prototype['@@transducer/result'] = function(result){
   if(this.completer){
     this.completer(this.stepper._step);
   }
-  return this.xf.result(result);
+  return this.xf['@@transducer/result'](result);
 };
-Gen.prototype.step = function(result, input) {
+Gen.prototype['@@transducer/step'] = function(result, input) {
   return this.stepper.step(result, input);
 };
 
@@ -40,12 +40,12 @@ Stepper.prototype.step = function(result, input){
   }
   this.next = next;
   if(next.done){
-    return {value: this.result, __transducers_reduced__: true};
+    return {'@@transducer/value': this.result, '@@transducer/reduced': true};
   }
   return this.result;
 };
 function step(stepper){
   return function(input){
-    stepper.result = stepper.xf.step(stepper.result, input);
+    stepper.result = stepper.xf['@@transducer/step'](stepper.result, input);
   };
 }

@@ -17,17 +17,17 @@ test('map', function(t){
   }
 
   var doubled = map(function(num){ return num * 2; });
-  var result = tr.toArray(doubled, [1,2,3]);
+  var result = tr.into([], doubled, [1,2,3]);
   t.deepEqual([2,4,6], result, 'can double');
 
   var tripled = map(function(num){ return num * 3; });
-  result = tr.toArray(tripled, [1,2,3]);
+  result = tr.into([], tripled, [1,2,3]);
   t.deepEqual([3,6,9], result, 'can triple');
 
   doubled = comp(
     map(function(num){ return num * 2; }),
     map(function(num){ return num * 3; }));
-  result = tr.toArray(doubled, [1,2,3]);
+  result = tr.into([], doubled, [1,2,3]);
   t.deepEqual([6,12,18], result, 'can double and triple in chain value');
 });
 
@@ -48,7 +48,7 @@ test('filter', function(t){
     return x%2 === 0;
   }
   var evenArray = [1, 2, 3, 4, 5, 6];
-  var result = tr.toArray(filter(isEven), evenArray);
+  var result = tr.into([], filter(isEven), evenArray);
   t.deepEqual([2, 4, 6], result, 'can filter even');
 });
 
@@ -64,11 +64,11 @@ test('take', function(t) {
     });
   }
 
-  t.deepEqual(tr.toArray(take(0), [1, 2, 3]), [], 'can pass an index to first');
-  t.deepEqual(tr.toArray(take(1), [1, 2, 3]), [1], 'can pull out the first element of an array');
-  t.deepEqual(tr.toArray(take(2), [1, 2, 3]), [1, 2], 'can pass an index to first');
-  t.deepEqual(tr.toArray(take(3), [1, 2, 3]), [1, 2, 3], 'can pass an index to first');
-  t.strictEqual(tr.toArray(take(-1), [1, 2, 3]).length, 0);
+  t.deepEqual(tr.into([], take(0), [1, 2, 3]), [], 'can pass an index to first');
+  t.deepEqual(tr.into([], take(1), [1, 2, 3]), [1], 'can pull out the first element of an array');
+  t.deepEqual(tr.into([], take(2), [1, 2, 3]), [1, 2], 'can pass an index to first');
+  t.deepEqual(tr.into([], take(3), [1, 2, 3]), [1, 2, 3], 'can pass an index to first');
+  t.strictEqual(tr.into([], take(-1), [1, 2, 3]).length, 0);
 });
 
 test('drop', function(t) {
@@ -87,10 +87,10 @@ test('drop', function(t) {
     });
   }
   var numbers = [1, 2, 3, 4];
-  t.deepEqual(tr.toArray(drop(1), numbers), [2, 3, 4], 'working rest()');
-  t.deepEqual(tr.toArray(drop(0), numbers), [1, 2, 3, 4], 'working rest(0)');
-  t.deepEqual(tr.toArray(drop(-1), numbers), [1, 2, 3, 4], 'working rest(-1)');
-  t.deepEqual(tr.toArray(drop(2), numbers), [3, 4], 'rest can take an index');
+  t.deepEqual(tr.into([], drop(1), numbers), [2, 3, 4], 'working rest()');
+  t.deepEqual(tr.into([], drop(0), numbers), [1, 2, 3, 4], 'working rest(0)');
+  t.deepEqual(tr.into([], drop(-1), numbers), [1, 2, 3, 4], 'working rest(-1)');
+  t.deepEqual(tr.into([], drop(2), numbers), [3, 4], 'rest can take an index');
 });
 
 test('push unshift', function(t) {
@@ -119,12 +119,12 @@ test('push unshift', function(t) {
     });
   }
 
-  t.deepEqual(tr.toArray(push(4,5,6), [1,2,3]), [1,2,3,4,5,6]);
-  t.deepEqual(tr.toArray(comp(push(4), push(5,6)), [1,2,3]), [1,2,3,4,5,6]);
+  t.deepEqual(tr.into([], push(4,5,6), [1,2,3]), [1,2,3,4,5,6]);
+  t.deepEqual(tr.into([], comp(push(4), push(5,6)), [1,2,3]), [1,2,3,4,5,6]);
 
-  t.deepEqual(tr.toArray(unshift(4, 5, 6), [1,2,3]), [4,5,6,1,2,3]);
-  t.deepEqual(tr.toArray(comp(unshift(4), unshift(5, 6)), [1,2,3]), [5,6,4,1,2,3]);
+  t.deepEqual(tr.into([], unshift(4, 5, 6), [1,2,3]), [4,5,6,1,2,3]);
+  t.deepEqual(tr.into([], comp(unshift(4), unshift(5, 6)), [1,2,3]), [5,6,4,1,2,3]);
 
-  t.deepEqual(tr.toArray(comp(push(4), unshift(5, 6)), [1,2,3]), [5,6,1,2,3,4]);
-  t.deepEqual(tr.toArray(comp(unshift(4), push(5, 6)), [1,2,3]), [4,1,2,3,5,6]);
+  t.deepEqual(tr.into([], comp(push(4), unshift(5, 6)), [1,2,3]), [5,6,1,2,3,4]);
+  t.deepEqual(tr.into([], comp(unshift(4), push(5, 6)), [1,2,3]), [4,1,2,3,5,6]);
 });
