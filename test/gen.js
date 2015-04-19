@@ -1,5 +1,5 @@
 "use strict";
-var gen = require('../'), 
+var gen = require('../gen'),
     test = require('tape'),
     tr = require('transduce'),
     comp = tr.compose,

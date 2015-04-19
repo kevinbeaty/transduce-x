@@ -1,29 +1,39 @@
-PROJECT:=transduce-gen
+PROJECT:=transduce-x
+BUILD:=build/$(PROJECT)
+NPM_BIN:=$(shell npm bin)
 
-JS_TARGET ?= build/$(PROJECT).js
-
-.PHONY: all clean js test serve
+.PHONY: all clean js test watch
 all: test js
 
 clean:
 	rm -rf build
 
-test: | node_modules
-	node --harmony `npm bin`/tape test/*.js
+watch:
+	$(NPM_BIN)/gulp watch
+
+test: lib | node_modules
+	$(NPM_BIN)/jshint test/*.js
+	node --harmony $(NPM_BIN)/tape test/*.js
+
+lib: src/*.js | node_modules
+	$(NPM_BIN)/gulp
+
+test-bail:
+	$(MAKE) test | $(NPM_BIN)/tap-bail
 
 node_modules:
 	npm install
 
 %.min.js: %.js | node_modules
-	`npm bin`/uglifyjs $< -o $@ -c -m
+	$(NPM_BIN)/uglifyjs $< -o $@ -c -m
 
 %.gz: %
 	gzip -c9 $^ > $@
 
-js: $(JS_TARGET) $(JS_TARGET:.js=.min.js)
+js: $(BUILD).js $(BUILD).min.js
 
-$(JS_TARGET): $(PROJECT).js | build
-	`npm bin`/browserify $< > $@
+$(BUILD).js: index.js src/*.js lib | build
+	$(NPM_BIN)/browserify -p bundle-collapser/plugin -s transduce-x index.js > $@
 
 build:
 	mkdir -p build

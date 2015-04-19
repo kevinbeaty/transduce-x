@@ -1,30 +1,43 @@
 {
-  "name": "transduce-gen",
-  "version": "0.4.0",
-  "description": "Create Transducers with ES6 Generators",
-  "main": "transduce-gen.js",
+  "name": "transduce-x",
+  "version": "0.1.0",
+  "description": "Experimental JavaScript transducers extensions",
+  "main": "index.js",
   "scripts": {
     "test": "make test"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/transduce/transduce-gen"
+    "url": "https://github.com/kevinbeaty/transduce-x"
   },
   "keywords": [
     "transducer",
     "transduce",
-    "generator",
-    "es6"
+    "iterator",
+    "promise",
+    "async"
   ],
   "author": "Kevin Beaty",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/transduce/transduce-gen/issues"
+    "url": "https://github.com/kevinbeaty/transduce-x/issues"
   },
-  "homepage": "http://github.com/transduce/transduce-gen",
+  "homepage": "http://github.com/kevinbeaty/transduce-x",
+  "dependencies": {
+    "any-promise": "~0.1.0",
+    "transduce": "^0.9.0"
+  },
   "devDependencies": {
-    "promise": "^6.1.0",
-    "tape": "^4.0.0",
-    "transduce": "^0.8.0"
+    "browserify": "~9.0.3",
+    "bundle-collapser": "~1.1.4",
+    "gulp": "^3.8.11",
+    "gulp-babel": "^5.0.0",
+    "gulp-sourcemaps": "^1.5.1",
+    "iterdone": "~0.1.0",
+    "jshint": "~2.6.0",
+    "promise": "~6.1.0",
+    "tap-bail": "0.0.0",
+    "tape": "~3.5.0",
+    "uglify-js": "~2.4.16"
   }
 }
