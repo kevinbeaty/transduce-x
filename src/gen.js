@@ -1,5 +1,5 @@
 "use strict"
-import {Transducer, reduced, protocols} from 'transduce/core'
+import {Transducer, reduced, protocols} from 'transduce/lib/util'
 
 const {step: tStep, result: tResult} = protocols.transducer
 
