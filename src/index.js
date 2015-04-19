@@ -1,2 +1,3 @@
 import * as async from  './async'
-export {async}
+import {gen} from './gen'
+export {async, gen}
